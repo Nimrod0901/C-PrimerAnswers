@@ -7,16 +7,15 @@ using std::cout;
 using std::endl;
 using std::vector;
 using std::string;
-using std::map;
+using std::multimap;
 using std::cin;
-using Lastname = vector<string>;
-using Family = map<string, Lastname>;
+using Firstname = string;
+using Lastname = string;
+using Family = multimap<Firstname, Lastname>;
 
 Family input_family() {
 	Family family;
-	for(string first_name; cout << "First name" <<  endl, cin >> first_name && first_name != "#q"; )
-		for(string child_name; cout << "Children name" << endl, cin >> child_name && child_name != "#q";)
-			family[first_name].push_back(child_name);
+	for(string first_name, last_name; cin >> first_name >> last_name; family.emplace(first_name, last_name));
 	return family;
 }
 
@@ -29,9 +28,7 @@ void print_family(Family const& family) {
 	}
 }
 
-
 int main() {
 	print_family(input_family());
 	return 0;
-
 }
