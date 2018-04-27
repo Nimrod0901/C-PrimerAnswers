@@ -1,0 +1,25 @@
+BasedOnStyle: Google
+
+IndentWidth: 4
+
+#AlignConsecutiveAssignments: false
+
+#AlignConsecutiveDeclarations: true
+
+BreakBeforeBraces: Attach
+
+ColumnLimit: 80
+
+IndentCaseLabels: true
+
+KeepEmptyLinesAtTheStartOfBlocks: false
+
+MaxEmptyLinesToKeep: 1
+
+ObjCSpaceAfterProperty: true
+
+SpacesBeforeTrailingComments: 1
+
+SpacesInAngles: false
+
+AccessModifierOffset: -4
