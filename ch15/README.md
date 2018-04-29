@@ -216,11 +216,11 @@ void memfcn(Base &b) { b = *this; }
 
 [Quote](15_26_quote.h) | [Bulk_Quote](15_26_bulk.h)
 
-## 练习15.27
+## [练习15.27](15_27.h)
 
 > 重新定义你的 Bulk_quote 类，令其继承构造函数。
 
-## 练习15.28
+## [练习15.28](15_28.cpp)
 
 > 定义一个存放 Quote 对象的 vector，将 Bulk_quote 对象传入其中。计算 vector 中所有元素总的 net_price。
 
@@ -309,8 +309,6 @@ for `rhs` which is a `WordQuery` : `WordQuery::rep()` where `query_word("wind")`
 ## 练习15.35
 
 > 实现 Query 类和 Query_base 类，其中需要定义rep 而无须定义 eval。
-
-[Query](query.h) | [Query_base](query_base.h)
 
 ## 练习15.36
 
