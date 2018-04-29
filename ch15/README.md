@@ -1,3 +1,5 @@
+# 第十五章 面向对象程序设计
+
 ## 练习15.1
 
 > 什么是虚成员？
@@ -20,7 +22,9 @@
 ## 练习15.4
 
 > 下面哪条声明语句是不正确的？请解释原因。
+
 ```cpp
+
 class Base { ... };
 (a) class Derived : public Derived { ... };
 (b) class Derived : private Base { ... };
@@ -83,6 +87,7 @@ void Quote::debug() const
 ## 练习15.13
 
 > 给定下面的类，解释每个 print 函数的机理：
+
 ```cpp
 class base {
 public:
@@ -98,9 +103,11 @@ private:
   int i;
 };
 ```
+
 在上述代码中存在问题吗？如果有，你该如何修改它？
 
 有问题。应该改为：
+
 ```cpp
   void print(ostream &os) override { base::print(os); os << " derived\n " << i; }
 ```
@@ -108,10 +115,11 @@ private:
 ## 练习15.14
 
 > 给定上一题中的类以及下面这些对象，说明在运行时调用哪个函数：
+
 ```cpp
 base bobj;  base *bp1 = &bobj;  base &br1 = bobj;
 derived dobj;  base *bp2 = &dobj;  base &br2 = dobj;
-(a) bobj.print();  (b)dobj.print();	(c)bp1->name();
+(a) bobj.print();  (b)dobj.print();  (c)bp1->name();
 (d)bp2->name();  (e)br1.print();  (f)br2.print();
 ```
 
@@ -141,13 +149,14 @@ derived dobj;  base *bp2 = &dobj;  base &br2 = dobj;
 ## 练习15.18
 
 > 假设给定了第543页和第544页的类，同时已知每个对象的类型如注释所示，判断下面的哪些赋值语句是合法的。解释那些不合法的语句为什么不被允许：
+
 ```cpp
 Base *p = &d1;  //d1 的类型是 Pub_Derv
-p = &d2;		//d2 的类型是 Priv_Derv
-p = &d3;		//d3 的类型是 Prot_Derv
-p = &dd1;		//dd1 的类型是 Derived_from_Public	
-p = &dd2;		//dd2 的类型是 Derived_from_Private
-p = &dd3;		//dd3 的类型是 Derived_from_Protected
+p = &d2;  //d2 的类型是 Priv_Derv
+p = &d3;  //d3 的类型是 Prot_Derv
+p = &dd1;  //dd1 的类型是 Derived_from_Public
+p = &dd2;  //dd2 的类型是 Derived_from_Private
+p = &dd3;  //dd3 的类型是 Derived_from_Protected
 ```
 
 * Base *p = &d1; 合法
@@ -160,18 +169,23 @@ p = &dd3;		//dd3 的类型是 Derived_from_Protected
 ## 练习15.19
 
 > 假设543页和544页的每个类都有如下形式的成员函数：
+
 ```cpp
 void memfcn(Base &b) { b = *this; }
 ```
+
 对于每个类，分别判断上面的函数是否合法。
 
 合法：
+
 * Pub_Derv
 * Priv_Derv
 * Prot_Derv
 * Derived_from_Public
 * Derived_from_Protected
+
 不合法：
+
 * Derived_from_Private
 
 ## [练习15.20](15_20.cpp)
@@ -181,6 +195,7 @@ void memfcn(Base &b) { b = *this; }
 ## [练习15.21](15_21.h)
 
 > 从下面这些一般性抽象概念中任选一个（或者选一个你自己的），将其对应的一组类型组织成一个继承体系：
+
 ```cpp
 (a) 图形文件格式（如gif、tiff、jpeg、bmp）
 (b) 图形基元（如方格、圆、球、圆锥）
@@ -236,10 +251,10 @@ void memfcn(Base &b) { b = *this; }
 
 [Quote](15_30_quote.h) | [Basket](15_30.h) | [TEST](15_30.cpp)
 
-
 ## 练习15.31
 
 > 已知 s1、s2、s3 和 s4 都是 string，判断下面的表达式分别创建了什么样的对象：
+
 ```cpp
 (a) Query(s1) | Query(s2) & ~Query(s3);
 (b) Query(s1) | (Query(s2) & ~Query(s3));
@@ -268,6 +283,7 @@ void memfcn(Base &b) { b = *this; }
 ## 练习15.34
 
 > 针对图15.3构建的表达式：
+
 ```cpp
 (a) 例举出在处理表达式的过程中执行的所有构造函数。
 (b) 例举出 cout << q 所调用的 rep。
@@ -275,7 +291,6 @@ void memfcn(Base &b) { b = *this; }
 ```
 
 * **a:** Query q = Query("fiery") & Query("bird") | Query("wind");
-
 
 1. `Query::Query(const std::string& s)` where s == "fiery","bird" and "wind"
 2. `WordQuery::WordQuery(const std::string& s)` where s == "fiery","bird" and "wind"
@@ -286,21 +301,16 @@ void memfcn(Base &b) { b = *this; }
 7. `BinaryQuery(const Query&l, const Query& r, std::string s);`
 8. `Query::Query(std::shared_ptr<Query_base> query)` 2times
 
-
 * **b:**
-
 
 1. `query.rep()` inside the operator <<().
 2. `q->rep()` inside the member function rep().
 3. `OrQuery::rep()` which is inherited from `BinaryQuery`.
-4. `Query::rep()` for `lhs` and `rhs`:
-for `rhs` which is a `WordQuery` : `WordQuery::rep()` where `query_word("wind")` is returned.For `lhs` which is an `AndQuery`.
+4. `Query::rep()` for `lhs` and `rhs`:for `rhs` which is a `WordQuery` : `WordQuery::rep()` where `query_word("wind")` is returned.For `lhs` which is an `AndQuery`.
 5. `AndQuery::rep()` which is inherited from `BinaryQuery`.
 6. `BinaryQuer::rep()`: for `rhs: WordQuery::rep()`   where query_word("fiery") is returned. For `lhs: WordQuery::rep()` where query_word("bird" ) is returned.
 
-
 * **c:**
-
 
 1. `q.eval()`
 2. `q->rep()`: where q is a pointer to `OrQuary`.
@@ -321,6 +331,7 @@ for `rhs` which is a `WordQuery` : `WordQuery::rep()` where `query_word("wind")`
 ## 练习15.38
 
 > 下面的声明合法吗？如果不合法，请解释原因;如果合法，请指出该声明的含义。
+
 ```cpp
 BinaryQuery a = Query("fiery") & Query("bird");
 AndQuery b = Query("fiery") & Query("bird");
@@ -340,10 +351,12 @@ OrQuery c = Query("fiery") & Query("bird");
 > 在 OrQuery 的 eval 函数中，如果 rhs 成员返回的是空集将发生什么？
 
 不会发生什么。代码如下：
+
 ```cpp
 std::shared_ptr<std::set<line_no>> ret_lines =
        std::make_shared<std::set<line_no>>(left.begin(), left.end());
 ```
+
 如果 rhs 成员返回的是空集，在 set 当中不会添加什么。
 
 ## 练习15.41
@@ -353,6 +366,7 @@ std::shared_ptr<std::set<line_no>> ret_lines =
 ## 练习15.42
 
 > 从下面的几种改进中选择一种，设计并实现它:
+
 ```cpp
 (a) 按句子查询并打印单词，而不再是按行打印。
 (b) 引入一个历史系统，用户可以按编号查阅之前的某个查询，并可以在其中添加内容或者将其余其他查询组合。
