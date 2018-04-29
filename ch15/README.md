@@ -234,6 +234,8 @@ void memfcn(Base &b) { b = *this; }
 
 > 编写你自己的 Basket 类，用它计算上一个练习中交易记录的总价格。
 
+[Quote](15_30_quote.h) | [Basket](15_30.h) | [TEST](15_30.cpp)
+
 
 ## 练习15.31
 
