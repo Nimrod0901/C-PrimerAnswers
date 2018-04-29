@@ -3,7 +3,7 @@
 
 using std::cout;
 
-double print_double(std::ostream &os, const Quote &item, size_t n) {
+double print_total(std::ostream &os, const Quote &item, size_t n) {
 	double ret = item.net_price(n);
 	os << "ISBN: " << item.isbn()
 	   << " # sold: " <<  n << " total due: " << ret << std::endl;
@@ -12,6 +12,6 @@ double print_double(std::ostream &os, const Quote &item, size_t n) {
 
 int main() {
 	Quote q("i am Alice", 100);
-	double ret = print_double(std::cout, q, 1);
+	double ret = print_total(std::cout, q, 1);
 	return 0;
 }
