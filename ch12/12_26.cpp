@@ -7,7 +7,9 @@
 #include <memory>
 #include <string>
 
-using namespace std;
+using std::allocator;
+using std::string;
+using std::cin;
 
 int main() {
     int n = 5;
