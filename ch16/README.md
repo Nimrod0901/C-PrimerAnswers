@@ -174,7 +174,7 @@ private:
 (c) inline template <typename T> T foo(T, unsigned int *);
 (d) template <typename T> f4(T, T);
 (e) typedef char Ctype;
-template <typename Ctype> Ctype f5(Ctype a);
+    template <typename Ctype> Ctype f5(Ctype a);
 ```
 
 * (a) 非法。应该为 `template <typename T, typename U, typename V> void f1(T, U, V);`。
@@ -207,11 +207,9 @@ void print(const Container& c) {
 }
 ```
 
-## 练习16.21
+## [练习16.21](16_21.h)
 
 > 编写你自己的 DebugDelete 版本。
-
-[DebugDelete](debugDelete.h)
 
 ## 练习16.22
 
@@ -279,8 +277,6 @@ int main() {
 ## 练习16.28
 
 > 编写你自己版本的 shared_ptr 和 unique_ptr。
-
-[shared_ptr](shared_ptr.h) | [unique_ptr](unique_ptr.h)
 
 ## 练习16.29
 
