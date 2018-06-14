@@ -1,4 +1,5 @@
-*.exe 
-*.o  
+*.exe
+*.o
 *.txt
 *.vscode
+*.gch
