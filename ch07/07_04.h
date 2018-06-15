@@ -4,8 +4,7 @@
 
 using std::string;
 
-class Person {
-private:
+struct Person {
 	string name;
 	string address;
 };

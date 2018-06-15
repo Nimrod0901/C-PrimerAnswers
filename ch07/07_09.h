@@ -8,12 +8,10 @@ using std::string;
 using std::ostream;
 using std::istream;
 
-class Person {
-private:
+struct Person {
     string name;
     string address;
 
-public:
     string getName const() { return name; }
     string getAddress const() { return address; }
 };
