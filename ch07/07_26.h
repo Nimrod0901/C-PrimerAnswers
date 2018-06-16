@@ -22,9 +22,6 @@ public:
 
     std::string isbn() const { return bookNo; };
     Sales_data &combine(const Sales_data &);
-
-    inline double double Sales_data::avg_price() const {
-        return units_sold ? revenue / units_sold : 0;
     }
 
 private:
