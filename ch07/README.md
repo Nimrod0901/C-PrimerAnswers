@@ -349,7 +349,7 @@ private:
 };
 ```
 
-## 练习7.41
+## [练习7.41](07_41.h) | [测试](07_41.cpp)
 
 > 使用委托构造函数重新编写你的Sales_data 类，给每个构造函数体添加一条语句，令其一旦执行就打印一条信息。用各种可能的方式分别创建 Sales_data 对象，认真研究每次输出的信息直到你确实理解了委托构造函数的执行顺序。
 
@@ -401,6 +401,7 @@ private:类，确定哪些构造函数
 ## 练习7.44
 
 > 下面这条声明合法吗？如果不，为什么？
+
 ```cpp
 vector<NoDefault> vec(10);
 ```
@@ -416,6 +417,8 @@ vector<NoDefault> vec(10);
 ## 练习7.46
 
 > 下面哪些论断是不正确的？为什么？
+
+
 ```cpp
 (a) 一个类必须至少提供一个构造函数。
 (b) 默认构造函数是参数列表为空的构造函数。
@@ -443,6 +446,7 @@ vector<NoDefault> vec(10);
 ## 练习7.48
 
 > 假定Sales_data 的构造函数不是explicit的，则下述定义将执行什么样的操作？
+
 ```cpp
 string null_isbn("9-999-9999-9");
 Sales_data item1(null_isbn);
@@ -585,7 +589,7 @@ double Example::rate;
 vector<double> Example::vec;
 ```
 
-rate 应该是一个常量表达式。而类内只能初始化整型类型的静态常量，所以不能在类内初始化vec。修改后如下：
+rate 应该是一个常量表达式。而u类内只能初始化整型类型的静态常量，所以不能在类内初始化vec。修改后如下：
 ```cpp
 // example.h
 class Example {
